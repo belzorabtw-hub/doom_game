@@ -1,5 +1,4 @@
 import arcade
-
 from constants import HALF, PLAYER_COLOR, PLAYER_HEIGHT, PLAYER_START_X, PLAYER_START_Y, PLAYER_WIDTH
 
 

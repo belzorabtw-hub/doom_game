@@ -1,5 +1,4 @@
 import arcade
-
 from constants import HALF, WALL_COLOR, WALL_SPECS
 
 
