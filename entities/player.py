@@ -5,23 +5,22 @@ from constants import PLAYER_COLOR, PLAYER_HEIGHT, PLAYER_START_X, PLAYER_START_
 
 class Player:
     def __init__(self) -> None:
-        self.center_x = PLAYER_START_X
-        self.center_y = PLAYER_START_Y
-        self.width = PLAYER_WIDTH
-        self.height = PLAYER_HEIGHT
-        self.color = PLAYER_COLOR
+        # Используем спрайт для игрока
+        self.shape = arcade.create_rectangle_filled(
+            PLAYER_START_X,
+            PLAYER_START_Y,
+            PLAYER_WIDTH,
+            PLAYER_HEIGHT,
+            PLAYER_COLOR,
+        )
 
     def draw(self) -> None:
-        arcade.draw_rectangle_filled(
-            self.center_x,
-            self.center_y,
-            self.width,
-            self.height,
-            self.color,
-        )
+        # Рисуем спрайт
+        self.shape.draw()
 
 
 if __name__ == "__main__":
     player = Player()
-    assert player.width == PLAYER_WIDTH
+    # Проверяем, что объект player.shape является экземпляром arcade.Shape
+    assert isinstance(player.shape, arcade.Shape)
     print("Player initialized.")
