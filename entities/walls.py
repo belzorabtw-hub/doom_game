@@ -1,25 +1,19 @@
 import arcade
-
-from constants import WALL_COLOR, WALL_SPECS
+from constants import HALF, WALL_COLOR, WALL_SPECS
 
 
 class Walls:
     def __init__(self) -> None:
-        # Используем ShapeElementList для хранения форм
-        self.shapes = arcade.ShapeElementList()
-        for x, y, width, height in WALL_SPECS:
-            # Добавляем каждый прямоугольник как спрайт
-            self.shapes.append(
-                arcade.create_rectangle_filled(x, y, width, height, WALL_COLOR)
-            )
+        self.specs = WALL_SPECS
 
     def draw(self) -> None:
-        # Рисуем все формы
-        self.shapes.draw()
+        for x, y, width, height in self.specs:
+            left = x - width * HALF
+            bottom = y - height * HALF
+            arcade.draw_lbwh_rectangle_filled(left, bottom, width, height, WALL_COLOR)
 
 
 if __name__ == "__main__":
     walls = Walls()
-    # Проверяем, что количество форм соответствует ожиданиям
-    assert len(walls.shapes) == len(WALL_SPECS)
+    assert len(walls.specs) == len(WALL_SPECS)
     print("Walls initialized.")
